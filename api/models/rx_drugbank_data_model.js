@@ -1,7 +1,5 @@
 var mongoose = require('mongoose');
 
-//mongoose.connect('mongodb://localhost:27017/rx_drugbank_data');
-mongoose.connect('mongodb://admin:nextel12@ds125293.mlab.com:25293/rx_drugbank_data');
 
 var rx_drugbank_data = mongoose.Schema({
     // dbca_id: mongoose.Schema.Types.ObjectId,
