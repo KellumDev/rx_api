@@ -5,17 +5,13 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const drugRoutes = require("./api/routes/dbca_pharm");
-//const orderRoutes = require("./api/routes/orders");
-// 'mongodb://admin:nextel12@ds125293.mlab.com:25293/rx_drugbank_data');
+
 mongoose.connect(
-    "mongodb://admin:nextel12@ds125293.mlab.com:25293/rx_drugbank_data", {
+   CONNECTION_STRING, {
         useMongoClient: true
     }
 );
 
-// mongoose.connect(
-//     "mongodb://admin:nextel12@ds125293.mlab.com:25293/rx_drugbank_data"
-// );
 
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -34,13 +30,8 @@ app.use((req, res, next) => {
     next();
 });
 
-// Routes which should handle requests
-//app.use("/dbca_pharm", drugRoutes);
-// app.use(drugRoutes);
-// routes.initialize(app);
-//app.use("/orders", orderRoutes);
 app.use("/drugs", drugRoutes);
-//app.use("/", drugRoutes);
+
 app.use((req, res, next) => {
     const error = new Error("Not found");
     error.status = 404;
